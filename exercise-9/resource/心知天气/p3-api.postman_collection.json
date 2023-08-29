@@ -1,0 +1,196 @@
+{
+	"info": {
+		"_postman_id": "1021a012-9385-474e-bedf-cc7e823a9493",
+		"name": "p3-api",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "17042201"
+	},
+	"item": [
+		{
+			"name": "天气",
+			"item": [
+				{
+					"name": "v3",
+					"item": [
+						{
+							"name": "查询天气实况(天气现象文字、代码和气温)",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://api.seniverse.com/v3/weather/now.json?key=SIKAtSLBNAYO6FdVJ&location=beijing&language=zh-Hans&unit=c",
+									"protocol": "https",
+									"host": [
+										"api",
+										"seniverse",
+										"com"
+									],
+									"path": [
+										"v3",
+										"weather",
+										"now.json"
+									],
+									"query": [
+										{
+											"key": "key",
+											"value": "SIKAtSLBNAYO6FdVJ"
+										},
+										{
+											"key": "location",
+											"value": "beijing"
+										},
+										{
+											"key": "language",
+											"value": "zh-Hans"
+										},
+										{
+											"key": "unit",
+											"value": "c"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "生活指数(穿衣、紫外线强度、洗车、旅游、感冒、运动指数)",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://api.seniverse.com/v3/life/suggestion.json?key=SIKAtSLBNAYO6FdVJ&location=shanghai&language=zh-Hans&days=5",
+									"protocol": "https",
+									"host": [
+										"api",
+										"seniverse",
+										"com"
+									],
+									"path": [
+										"v3",
+										"life",
+										"suggestion.json"
+									],
+									"query": [
+										{
+											"key": "key",
+											"value": "SIKAtSLBNAYO6FdVJ"
+										},
+										{
+											"key": "location",
+											"value": "shanghai"
+										},
+										{
+											"key": "language",
+											"value": "zh-Hans"
+										},
+										{
+											"key": "days",
+											"value": "5"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "未来三天天气预报",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://api.seniverse.com/v3/weather/daily.json?key=SIKAtSLBNAYO6FdVJ&location=beijing&language=zh-Hans&unit=c&start=0&days=3",
+									"protocol": "https",
+									"host": [
+										"api",
+										"seniverse",
+										"com"
+									],
+									"path": [
+										"v3",
+										"weather",
+										"daily.json"
+									],
+									"query": [
+										{
+											"key": "key",
+											"value": "SIKAtSLBNAYO6FdVJ"
+										},
+										{
+											"key": "location",
+											"value": "beijing"
+										},
+										{
+											"key": "language",
+											"value": "zh-Hans"
+										},
+										{
+											"key": "unit",
+											"value": "c"
+										},
+										{
+											"key": "start",
+											"value": "0"
+										},
+										{
+											"key": "days",
+											"value": "3"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "心知天气-公钥签名验证",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://api.seniverse.com/v4?fields=air_obs&public_key=PDrhiLUNYorWn9LTl&ts=1590034650&ttl=600&locations=114.1632:22.2509&sig=SIKAtSLBNAYO6FdVJ",
+							"protocol": "https",
+							"host": [
+								"api",
+								"seniverse",
+								"com"
+							],
+							"path": [
+								"v4"
+							],
+							"query": [
+								{
+									"key": "fields",
+									"value": "air_obs"
+								},
+								{
+									"key": "public_key",
+									"value": "PDrhiLUNYorWn9LTl",
+									"description": "公钥"
+								},
+								{
+									"key": "ts",
+									"value": "1590034650"
+								},
+								{
+									"key": "ttl",
+									"value": "600"
+								},
+								{
+									"key": "locations",
+									"value": "114.1632:22.2509"
+								},
+								{
+									"key": "sig",
+									"value": "SIKAtSLBNAYO6FdVJ",
+									"description": "私钥"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
