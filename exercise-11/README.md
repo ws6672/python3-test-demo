@@ -50,3 +50,60 @@ text_entry.pack(side=LEFT)
 label1.grid(row=0, column=0)
 
 ```
+
+
+### filedialog 
+
+filedialog 是Python标准库中的一个模块，它提供了一组用于文件对话框操作的函数。通过该模块，您可以方便地与用户交互选择文件和目录的操作。
+
+filedialog 模块通常与 tkinter（Python的标准GUI库）一起使用，并提供了以下函数：
+
+- filedialog.askopenfilename()：显示一个文件打开对话框，让用户选择一个文件，并返回所选文件的路径。
+- filedialog.asksaveasfilename()：显示一个文件保存对话框，让用户选择保存文件的路径和文件名，并返回所选文件的路径。
+- filedialog.askopenfilenames()：显示一个文件打开对话框，让用户选择多个文件，并返回所选文件的路径列表。
+- filedialog.askdirectory()：显示一个目录选择对话框，让用户选择一个目录，并返回所选目录的路径。
+
+可选参数：
+- defaultextension	指定文件的后缀，如果用户输入文件名包含后缀，那么该选项不生效
+- filetypes	指定筛选文件类型的下拉菜单选项；选项值是由 2 元祖（类型名，后缀）构成的列表
+- initialdir 默认保存目录
+- parent 如果不指定该选项，那么对话框默认显示在根窗口上；如果想要将对话框显示在子窗口 w 上，那么可以设置 parent=w
+- title	指定文件对话框的标题栏文本
+
+
+这些函数提供了一个标准的、跨平台的界面，让用户可以方便地选择文件或目录。在对话框中，用户可以浏览文件系统、搜索文件、创建新文件夹等。
+
+如果不指定该选项，那么对话框默认显示在根窗口上
+
+
+## zipfile
+zipfile 是Python标准库中的一个模块，用于处理 ZIP 文件。通过 zipfile 模块，您可以创建、读取和提取 ZIP 文件，以及对其中的文件进行压缩和解压缩操作。
+
+zipfile 模块提供了一组类和函数，用于处理 ZIP 文件。以下是一些常用的 zipfile 模块的功能：
+
+ZipFile 类：用于表示 ZIP 文件。您可以使用 ZipFile 类创建、打开和操作 ZIP 文件。它提供了一系列方法，例如 extractall() 用于解压缩所有文件，extract() 用于解压缩单个文件，write() 用于将文件添加到 ZIP 文件中等。
+
+ZipInfo 类：用于表示 ZIP 文件中的单个文件的信息。ZipFile 类的一些方法返回 ZipInfo 对象，您可以使用它来获取文件的名称、压缩信息、时间戳等。
+
+
+示例：
+```PYTHON
+
+def compress_folder(folder_path, output_path):
+    with zipfile.ZipFile(output_path, "w", zipfile.ZIP_DEFLATED) as zipf:
+        for root, dirs, files in os.walk(folder_path):
+            # 去除根目录前缀，获取相对路径
+            relative_path = os.path.relpath(root, folder_path)
+            for file in files:    
+                file_path = os.path.join(root, file)
+                if not os.path.isdir(file_path):
+                    print("压缩文件路径 {}".format(file_path))
+                    zip_path = os.path.join(relative_path, file)
+                    zipf.write(file_path, zip_path)
+
+            # 嵌套压缩子文件夹
+            for dir in dirs:
+                dir_path = os.path.join(root, dir)
+                compress_folder(dir_path, output_path)
+
+```
