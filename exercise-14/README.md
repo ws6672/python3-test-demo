@@ -2,6 +2,7 @@
 # 需求
 使用Python的图像处理库，给一张图片添加滤镜效果。
 
+
 # 相关知识点
 
 ## GUI
@@ -139,4 +140,17 @@ def re_generator_name(file_path:str)->str:
     name = os.path.splitext(file_name)[0]
     return "{}_解析{}".format(name,file_extension)
 ```
+
+## SIMD指令集
+
+SIMD (Single Instruction, Multiple Data) 指令是一种计算机处理器的指令集体系结构，旨在并行处理多个数据元素。它允许在单个指令中同时对多个数据元素执行相同的操作，从而实现数据级并行性。SIMD 指令集通常用于多媒体、图形处理、向量计算和信号处理等需要高度并行处理的应用领域。
+
+SIMD 指令集提供了特殊的寄存器和指令，用于处理向量数据。向量数据是一组相同类型的数据元素，例如一组浮点数或整数。通过使用 SIMD 指令，处理器可以同时对向量数据中的多个元素执行相同的操作，而无需逐个操作每个元素。
+
+SIMD 指令集可以提高计算性能，特别是在需要对大量数据进行相同操作的情况下。通过并行处理多个数据元素，SIMD 指令可以在单个指令周期内执行更多的计算操作，从而加快计算速度。
+
+常见的 SIMD 指令集包括 Intel 的 SSE (Streaming SIMD Extensions) 和 AVX (Advanced Vector Extensions)，以及 ARM 的 NEON (ARM Advanced SIMD)。这些指令集为处理器提供了广泛的 SIMD 功能，以支持高效的向量计算和并行处理。
+
+
+本例的图形库可以使用 [Pillow 的性能优化版本 Pillow-SIMD](https://python-pillow.org/pillow-perf/)替代，该库支持SIMD指令，拥有更好的性能。
 
