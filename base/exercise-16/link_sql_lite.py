@@ -1,10 +1,13 @@
+import os
 import sqlite3
 from sqlite3 import Connection
 
 DEFAULT_NAME = '{}.db'
+script_dir = os.path.dirname(os.path.abspath(__file__))
+
 
 def open_or_create(db_name:str)->Connection:
-    return sqlite3.connect(DEFAULT_NAME.format(db_name))
+    return sqlite3.connect(os.path.join(script_dir, DEFAULT_NAME.format(db_name)))
 
 def init_data(conn:Connection):
     cursor =  conn.cursor()
@@ -18,7 +21,7 @@ def init_data(conn:Connection):
 def count(conn:Connection)->int:
     cursor =  conn.cursor()
     cursor.execute("SELECT COUNT(*) FROM test_data")
-    row_number= cursor.fetchone()
+    row_number= cursor.fetchone()[0]
     cursor.close()
     return row_number
 
